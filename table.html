@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Todo List</title>
+  <style>
+    .todolist li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 0;
+    }
+
+    .todolist button {
+      margin-left: 10px;
+    }
+
+
+ul.todolist {
+    padding: 0px;
+    width: 100%;
+    max-width: 20%;
+}
+
+  </style>
+</head>
+<body>
+    <form id="todolist-form">
+      <input type="text" placeholder="Please Enter Something" id="todofieldname">
+      <input type="submit" value="Add Item">
+    </form>
+
+    <ul class="todolist">
+    </ul>
+
+    <script type="text/javascript">
+       document.getElementById('todolist-form').addEventListener('submit', function(event) {
+         event.preventDefault();
+         var txt = document.getElementById('todofieldname').value;
+         if (txt) {
+           var li = document.createElement('li');
+           li.textContent = txt;
+
+           var removeButton = document.createElement('button');
+           removeButton.textContent = 'Remove';
+           removeButton.onclick = function() {
+             li.remove();
+           };
+
+           li.appendChild(removeButton);
+           document.querySelector('.todolist').appendChild(li);
+           document.getElementById('todofieldname').value = '';
+         }
+       });
+    </script>
+</body>
+</html>
